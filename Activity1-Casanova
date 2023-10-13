@@ -1,0 +1,410 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Casanova5550/CCDATRCL_ASSIGNMENT_COM221/blob/main/Activity1-Casanova\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "h2vFiYhGzZOg"
+      },
+      "source": [
+        "# Exercise 1"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## Class Initialization"
+      ],
+      "metadata": {
+        "id": "sRm6kPQozcaU"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "b1u4Dt9mzZOi"
+      },
+      "outputs": [],
+      "source": [
+        "class Node:\n",
+        "    def __init__(self, data):\n",
+        "        self.data = data\n",
+        "        self.next = None\n",
+        "        self.prev = None"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "tigvHSaHzZOj"
+      },
+      "outputs": [],
+      "source": [
+        "class LinkedList:\n",
+        "\n",
+        "    def __init__(self):\n",
+        "        self.head = None\n",
+        "\n",
+        "    def traverse(self, node):\n",
+        "        while node:\n",
+        "            print(node.data, end=\" -> \")\n",
+        "            node = node.next"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "LIkQBioVzZOk"
+      },
+      "outputs": [],
+      "source": [
+        "class DoublyLinkedList:\n",
+        "\n",
+        "    def __init__(self):\n",
+        "        self.head = None\n",
+        "\n",
+        "    def traverse(self, node):\n",
+        "        while node:\n",
+        "            print(node.data, end=\" -> \")\n",
+        "            node = node.next"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "zlxNT5EozZOl"
+      },
+      "outputs": [],
+      "source": [
+        "class CircularLinkedList:\n",
+        "\n",
+        "    def __init__(self):\n",
+        "        self.head = None\n",
+        "\n",
+        "    def traverse(self, node):\n",
+        "\n",
+        "        head = node\n",
+        "\n",
+        "        while node:\n",
+        "            print(node.data, end=\" -> \")\n",
+        "            node = node.next\n",
+        "\n",
+        "            # Break to prevent infinite loop\n",
+        "            if node == head:\n",
+        "                break"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "O68-Q1-bzZOl"
+      },
+      "source": [
+        "#### 1. Create a Singly Linked list\n",
+        "\n",
+        "- Each node should contain your name and your seatmates in your row\n",
+        "- Create at least 5 nodes\n",
+        "- Traverse all nodes"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 9,
+      "metadata": {
+        "id": "pTcx_OuPzZOl"
+      },
+      "outputs": [],
+      "source": [
+        "class Node:\n",
+        "    def __init__(self, name, seatmates=[]):\n",
+        "        self.name = name\n",
+        "        self.seatmates = seatmates\n",
+        "        self.next = None\n",
+        "\n",
+        "class SinglyLinkedList:\n",
+        "    def __init__(self):\n",
+        "        self.head = None\n",
+        "\n",
+        "    def append(self, name, seatmates=[]):\n",
+        "        new_node = Node(name, seatmates)\n",
+        "        if not self.head:\n",
+        "            self.head = new_node\n",
+        "        else:\n",
+        "            current = self.head\n",
+        "            while current.next:\n",
+        "                current = current.next\n",
+        "            current.next = new_node\n",
+        "\n",
+        "    def traverse(self):\n",
+        "        current = self.head\n",
+        "        while current:\n",
+        "            print(f\"My Name: {current.name}\")\n",
+        "            print(\"Seatmates:\")\n",
+        "            for i, seatmate in enumerate(current.seatmates, start=1):\n",
+        "                print(f\"  Seatmate {i}: {seatmate}\")\n",
+        "            print()\n",
+        "            current = current.next\n",
+        "\n",
+        "\n",
+        "linked_list = SinglyLinkedList()\n",
+        "linked_list.append(\"John\", [\"Sarah\", \"Mike\"])\n",
+        "linked_list.append(\"Emily\", [\"David\", \"Lisa\"])\n",
+        "linked_list.append(\"Mark\", [\"Jessica\", \"Chris\"])\n",
+        "linked_list.append(\"Laura\", [\"Alex\", \"Olivia\"])\n",
+        "linked_list.append(\"Kevin\", [\"Rachel\", \"Daniel\"])\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "IFgwbdw_zZOm"
+      },
+      "source": [
+        "#### 2. Create a Doubly Linked list\n",
+        "\n",
+        "- Each node should contain your name and your seatmates in your row\n",
+        "- Create at least 5 nodes\n",
+        "- Traverse all nodes"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 4,
+      "metadata": {
+        "id": "8kQD2A_QzZOm",
+        "outputId": "81722d0d-1b5b-4e47-fe21-af6434b5a6b0",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Traversing forward:\n",
+            "My Name: John\n",
+            "Seatmates:\n",
+            "  Seatmate 1: Sarah\n",
+            "  Seatmate 2: Mike\n",
+            "\n",
+            "My Name: Emily\n",
+            "Seatmates:\n",
+            "  Seatmate 1: David\n",
+            "  Seatmate 2: Lisa\n",
+            "\n",
+            "My Name: Mark\n",
+            "Seatmates:\n",
+            "  Seatmate 1: Jessica\n",
+            "  Seatmate 2: Chris\n",
+            "\n",
+            "My Name: Laura\n",
+            "Seatmates:\n",
+            "  Seatmate 1: Alex\n",
+            "  Seatmate 2: Olivia\n",
+            "\n",
+            "My Name: Kevin\n",
+            "Seatmates:\n",
+            "  Seatmate 1: Rachel\n",
+            "  Seatmate 2: Daniel\n",
+            "\n",
+            "\n",
+            "Traversing backward:\n",
+            "My Name: Kevin\n",
+            "Seatmates:\n",
+            "  Seatmate 1: Rachel\n",
+            "  Seatmate 2: Daniel\n",
+            "\n",
+            "My Name: Laura\n",
+            "Seatmates:\n",
+            "  Seatmate 1: Alex\n",
+            "  Seatmate 2: Olivia\n",
+            "\n",
+            "My Name: Mark\n",
+            "Seatmates:\n",
+            "  Seatmate 1: Jessica\n",
+            "  Seatmate 2: Chris\n",
+            "\n",
+            "My Name: Emily\n",
+            "Seatmates:\n",
+            "  Seatmate 1: David\n",
+            "  Seatmate 2: Lisa\n",
+            "\n",
+            "My Name: John\n",
+            "Seatmates:\n",
+            "  Seatmate 1: Sarah\n",
+            "  Seatmate 2: Mike\n",
+            "\n"
+          ]
+        }
+      ],
+      "source": [
+        "class Node:\n",
+        "    def __init__(self, name, seatmates=None):\n",
+        "        self.name = name\n",
+        "        self.seatmates = seatmates if seatmates is not None else []\n",
+        "        self.next = None\n",
+        "        self.prev = None\n",
+        "\n",
+        "class DoublyLinkedList:\n",
+        "    def __init__(self):\n",
+        "        self.head = None\n",
+        "\n",
+        "    def append(self, name, seatmates=None):\n",
+        "        new_node = Node(name, seatmates)\n",
+        "        if not self.head:\n",
+        "            self.head = new_node\n",
+        "        else:\n",
+        "            current = self.head\n",
+        "            while current.next:\n",
+        "                current = current.next\n",
+        "            current.next = new_node\n",
+        "            new_node.prev = current\n",
+        "\n",
+        "    def traverse_forward(self):\n",
+        "        current = self.head\n",
+        "        while current:\n",
+        "            print(f\"My Name: {current.name}\")\n",
+        "            print(\"Seatmates:\")\n",
+        "            for i, seatmate in enumerate(current.seatmates, start=1):\n",
+        "                print(f\"  Seatmate {i}: {seatmate}\")\n",
+        "            print()\n",
+        "            current = current.next\n",
+        "\n",
+        "    def traverse_backward(self):\n",
+        "        current = self.head\n",
+        "        while current and current.next:\n",
+        "            current = current.next\n",
+        "        while current:\n",
+        "            print(f\"My Name: {current.name}\")\n",
+        "            print(\"Seatmates:\")\n",
+        "            for i, seatmate in enumerate(current.seatmates, start=1):\n",
+        "                print(f\"  Seatmate {i}: {seatmate}\")\n",
+        "            print()\n",
+        "            current = current.prev\n",
+        "\n",
+        "\n",
+        "linked_list = DoublyLinkedList()\n",
+        "linked_list.append(\"John\", [\"Sarah\", \"Mike\"])\n",
+        "linked_list.append(\"Emily\", [\"David\", \"Lisa\"])\n",
+        "linked_list.append(\"Mark\", [\"Jessica\", \"Chris\"])\n",
+        "linked_list.append(\"Laura\", [\"Alex\", \"Olivia\"])\n",
+        "linked_list.append(\"Kevin\", [\"Rachel\", \"Daniel\"])\n",
+        "\n",
+        "\n",
+        "print(\"Traversing forward:\")\n",
+        "linked_list.traverse_forward()\n",
+        "\n",
+        "print(\"\\nTraversing backward:\")\n",
+        "linked_list.traverse_backward()\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "rtApbsCjzZOm"
+      },
+      "source": [
+        "#### 3. Create a Circular Linked list\n",
+        "\n",
+        "- Each node should contain your name and your seatmates in your row\n",
+        "- Create at least 5 nodes\n",
+        "- Traverse all nodes"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 7,
+      "metadata": {
+        "id": "Gp1Oiq0jzZOn"
+      },
+      "outputs": [],
+      "source": [
+        "class Node:\n",
+        "    def __init__(self, name, seatmates=None):\n",
+        "        self.name = name\n",
+        "        self.seatmates = seatmates if seatmates is not None else []\n",
+        "        self.next = None\n",
+        "\n",
+        "class CircularLinkedList:\n",
+        "    def __init__(self):\n",
+        "        self.head = None\n",
+        "\n",
+        "    def append(self, name, seatmates=None):\n",
+        "        new_node = Node(name, seatmates)\n",
+        "        if not self.head:\n",
+        "            self.head = new_node\n",
+        "            new_node.next = self.head\n",
+        "        else:\n",
+        "            current = self.head\n",
+        "            while current.next != self.head:\n",
+        "                current = current.next\n",
+        "            current.next = new_node\n",
+        "            new_node.next = self.head\n",
+        "\n",
+        "    def traverse(self):\n",
+        "        if not self.head:\n",
+        "            return\n",
+        "        current = self.head\n",
+        "        while True:\n",
+        "            print(f\"My Name: {current.name}\")\n",
+        "            print(\"Seatmates:\")\n",
+        "            for i, seatmate in enumerate(current.seatmates, start=1):\n",
+        "                print(f\"  Seatmate {i}: {seatmate}\")\n",
+        "            print()\n",
+        "            current = current.next\n",
+        "            if current == self.head:\n",
+        "                break\n",
+        "\n",
+        "\n",
+        "linked_list = CircularLinkedList()\n",
+        "linked_list.append(\"John\", [\"Sarah\", \"Mike\"])\n",
+        "linked_list.append(\"Emily\", [\"David\", \"Lisa\"])\n",
+        "linked_list.append(\"Mark\", [\"Jessica\", \"Chris\"])\n",
+        "linked_list.append(\"Laura\", [\"Alex\", \"Olivia\"])\n",
+        "linked_list.append(\"Kevin\", [\"Rachel\", \"Daniel\"])\n",
+        "\n",
+        "\n",
+        "\n",
+        "\n"
+      ]
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "display_name": "Python 3",
+      "language": "python",
+      "name": "python3"
+    },
+    "language_info": {
+      "name": "python",
+      "version": "3.11.4"
+    },
+    "orig_nbformat": 4,
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
